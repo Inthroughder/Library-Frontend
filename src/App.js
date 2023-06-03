@@ -1,36 +1,40 @@
 import React from "react"
 import Header from "./components/Header"
 import Users from "./components/Users"
-import AddUser from "./components/AddUser"
+import EditForm from "./components/EditForm"
+import FindForm from "./components/FindForm"
 import axios from "axios"
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownList from "./components/DropdownList"
 
-const baseUrl = "http://localhost:8080/reader/student"
+const baseUrl = "http://localhost:8080"
 
 class App extends React.Component { //элемент ("компонент"), который содержит всё, что есть на странице
     
     constructor(props){
         super(props)
-        axios.get(baseUrl).then((response) => {
-            this.setState({users: response.data})
-        })
 
         this.state = {
-            users: []
+            users: [],
+            currentQuery: 1
         }
 
-        this.addUser = this.addUser.bind(this)
+        this.postUser = this.postUser.bind(this)
+        this.getUsers = this.getUsers.bind(this)
         this.deleteUser = this.deleteUser.bind(this)
-        this.editUser = this.editUser.bind(this)
+        this.onDropdownChange = this.onDropdownChange.bind(this)
     }
 
     render(){
         return (<div>
-            <Header title="User list"/>
+            <Header title="University library information system" usersCount={this.state.users.length}/>
             <main>
-                <Users users={this.state.users} onEdit={this.editUser} onDelete={this.deleteUser}/>
+                <Users users={this.state.users} onEdit={this.postUser} onDelete={this.deleteUser}/>
             </main>
             <aside>
-                <AddUser onAdd={this.addUser}/>
+                <DropdownList onChange={this.onDropdownChange}/>
+                {(this.state.currentQuery===1) && <EditForm onAdd={this.postUser}/>}
+                <FindForm onFilter={this.getUsers}/>
             </aside>
         </div>)
     }
@@ -42,17 +46,27 @@ class App extends React.Component { //элемент ("компонент"), к�
         })
     }
 
-    editUser(user){
-        let allUsers = this.state.users
-        allUsers[user.id - 1] = user
-        this.setState({users: []}, () => {
-            this.setState({users:[...allUsers]})
+    postUser(user){
+
+        let url = `${baseUrl}/reader`
+
+        axios.post(url, user).then((response) => {
+            this.setState({users: response.data})
+        })
+
+    }
+
+    getUsers(filter){
+        const {bookPlace, category, faculty, groupNumber, chair} = filter
+        let url = `${baseUrl}/reader?bookPlace=${bookPlace}&category=${category}&faculty=${faculty}&groupNumber=${groupNumber}&chair=${chair}`
+
+        axios.get(url).then((response) => {
+            this.setState({users: response.data})
         })
     }
 
-    addUser(user){
-        const id = this.state.users.length + 1
-        this.setState({users: [...this.state.users, {id, ...user}]})
+    onDropdownChange(variant){
+        this.setState({currentQuery: variant})
     }
 
 }

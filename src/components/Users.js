@@ -11,9 +11,9 @@ class Users extends React.Component {
                 ))}
             </div>)
         else
-        return (<div className="user">
-            <h3>No users</h3>
-        </div>)
+            return (<div className="user">
+                    <h3>No users</h3>
+                    </div>)
     }
 
 }

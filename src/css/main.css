@@ -20,6 +20,12 @@ body {
     font-weight: 600;
 }
 
+.count {
+    background-color: #000000;
+    padding: 20px 100px; /*vertical horizontal*/
+    font-weight: 600;
+}
+
 main {
     margin: 50px 100px;
     width: 50%;
@@ -100,4 +106,26 @@ form button:hover {
 
 .user form button:hover {
     transform: scale(1.01);
+}
+
+.dropdown {
+    width: 100%;
+    cursor: pointer;
+    padding: 15px 5%;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    margin-bottom: 10px;
+    border: 0;
+    background:#4b4444;
+    color: #b6591b;
+    outline: none;
+    font-size: 15px;
+}
+
+.dropdown_menu {
+    
+}
+
+.dropdown_item {
+
 }
