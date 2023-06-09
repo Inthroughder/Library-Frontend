@@ -8,7 +8,7 @@ class Header extends React.Component {
                 {this.props.title}
             </header>
             <p className="count">
-                {this.props.usersCount > 0 ? `Readers count: ${this.props.usersCount}` : ""}
+                {this.props.entityCount > 0 ? `Records count: ${this.props.entityCount}` : ""}
             </p>
             </>
         )

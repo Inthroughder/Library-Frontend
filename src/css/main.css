@@ -26,7 +26,7 @@ body {
     font-weight: 600;
 }
 
-main {
+.users_main {
     margin: 50px 100px;
     width: 50%;
     float: left;
@@ -39,20 +39,20 @@ aside {
     float: left;
 }
 
-main .user {
+.users_main .user {
     margin-bottom: 50px;
     background-color: #c9531d;
     padding: 20px;
 }
 
-main .delete-icon {
+.users_main .delete-icon {
     float: right;
     color:#af1010;
     cursor: pointer;
     transform: scale(2);
 }
 
-main .edit-icon {
+.users_main .edit-icon {
     float: right;
     margin-right: 25px;
     color:#19c513;
@@ -60,8 +60,8 @@ main .edit-icon {
     transform: scale(2);
 }
 
-main .delete-icon:hover,
-main .edit-icon:hover {
+.users_main .delete-icon:hover,
+.users_main .edit-icon:hover {
     opacity: 0.5;
 }
 
@@ -106,26 +106,4 @@ form button:hover {
 
 .user form button:hover {
     transform: scale(1.01);
-}
-
-.dropdown {
-    width: 100%;
-    cursor: pointer;
-    padding: 15px 5%;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    margin-bottom: 10px;
-    border: 0;
-    background:#4b4444;
-    color: #b6591b;
-    outline: none;
-    font-size: 15px;
-}
-
-.dropdown_menu {
-    
-}
-
-.dropdown_item {
-
 }
