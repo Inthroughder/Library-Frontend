@@ -1,11 +1,11 @@
 import React from "react";
 import "../css/popup.css"
-import image from "../img/hahafunny.jpg"
-export const Popup = ({ closePopup }) => {
+import image from "../img/no.png"
+export const ErrorPopup = ({ closeErrorPopup }) => {
   return (
     <div className="popup-container">
      <div className="popup-body">
-      <button onClick={closePopup}>Close</button>
+      <button onClick={closeErrorPopup}>Close</button>
       <img src={image} />
      </div>
     </div>
